@@ -37,6 +37,13 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
+        .switch-view-button {
+            background-color: #F9A826; /* Orange, distinct color */
+            color: white;
+        }
+        .switch-view-button:hover {
+            background-color: #F57F17; /* Darker orange */
+        }
     </style>
 </head>
 <body class="bg-stone-100 text-stone-800 font-inter">
@@ -44,13 +51,14 @@
     <header class="bg-teal-700 text-white p-6 shadow-md sticky top-0 z-50">
         <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center">
             <h1 class="text-2xl font-bold mb-4 sm:mb-0">Tren Kemeja Klasik Roblox & Ide Desain</h1>
-            <nav id="mainNav" class="flex flex-wrap justify-center gap-2">
+            <nav id="mainNav" class="flex flex-wrap justify-center items-center gap-2">
                 <button data-target="beranda" class="nav-link px-4 py-2 rounded-md text-sm font-medium transition-colors duration-150 active-nav">Beranda</button>
                 <button data-target="analisisPasar" class="nav-link px-4 py-2 rounded-md text-sm font-medium transition-colors duration-150 inactive-nav">Analisis Pasar</button>
                 <button data-target="ideDesain" class="nav-link px-4 py-2 rounded-md text-sm font-medium transition-colors duration-150 inactive-nav">Ide Desain</button>
                 <button data-target="teknikDesain" class="nav-link px-4 py-2 rounded-md text-sm font-medium transition-colors duration-150 inactive-nav">Teknik Desain</button>
                 <button data-target="pemasaranPenjualan" class="nav-link px-4 py-2 rounded-md text-sm font-medium transition-colors duration-150 inactive-nav">Pemasaran</button>
                 <button data-target="kesimpulanTips" class="nav-link px-4 py-2 rounded-md text-sm font-medium transition-colors duration-150 inactive-nav">Kesimpulan</button>
+                <a href="roblox_shirt_infographic_001.html" id="switchToInfographic" class="nav-link switch-view-button px-4 py-2 rounded-md text-sm font-medium transition-colors duration-150 ml-0 mt-2 sm:mt-0 sm:ml-2">Lihat Infografis</a>
             </nav>
         </div>
     </header>
@@ -61,7 +69,7 @@
             <h2 class="text-3xl font-semibold text-teal-700 mb-4">Selamat Datang!</h2>
             <p class="text-lg mb-3">Aplikasi ini adalah panduan interaktif Anda untuk memahami laporan "Riset Tren Kemeja Klasik Roblox dan Ide Desain untuk Dijual".</p>
             <p class="mb-3">Di sini, Anda dapat menjelajahi analisis pasar terkini, menemukan ide-ide desain yang sedang tren, mempelajari teknik desain untuk meningkatkan daya tarik visual, memahami strategi pemasaran yang efektif, dan mendapatkan tips praktis untuk memulai atau mengembangkan bisnis desain Kemeja Klasik Anda di Roblox.</p>
-            <p>Gunakan navigasi di atas untuk berpindah antar bagian. Setiap bagian dirancang untuk memberikan informasi secara terstruktur dan mudah diakses. Selamat menjelajah!</p>
+            <p>Gunakan navigasi di atas untuk berpindah antar bagian. Selamat menjelajah!</p>
         </section>
 
         <section id="analisisPasar" class="content-section bg-white p-6 rounded-lg shadow">
@@ -187,7 +195,6 @@
             { title: "Pemasaran & Komunitas", content: "Promosi di TikTok, Instagram, YouTube. Terlibat di grup Roblox & Discord. Bangun homestore. Kolaborasi." }
         ],
         designIdeas: [
-            // Data dari Tabel 2 laporan
             { category: "Y2K", name: "Y2K Minimalist Crop", details: "Atasan crop top warna solid (kuning 'Piercing Canary' atau pink 'Electric Flamingo') dengan logo kecil merek desainer fiktif.", motifs: "Logo kecil, warna cerah/pastel.", audience: "Pemain yang suka gaya bersih, modern, Y2K." },
             { category: "Y2K", name: "McBling Statement Tee", details: "Kaos baby tee dengan slogan centil ('Princess', 'Diva') dalam font Y2K, hiasan tekstur berlian imitasi/glitter semu.", motifs: "Slogan, glitter, rhinestones.", audience: "Pemain yang suka feminin, glamor, menonjol." },
             { category: "Y2K", name: "Cyber Runner Shirt", details: "Kemeja biru metalik & perak dengan garis abstrak bercahaya atau pola sirkuit halus.", motifs: "Pola sirkuit, garis digital.", audience: "Penyuka futurisme, teknologi." },
@@ -258,7 +265,7 @@
         }
 
         mainNav.addEventListener('click', function (e) {
-            if (e.target.matches('.nav-link')) {
+            if (e.target.matches('.nav-link') && e.target.dataset.target) { // Pastikan itu tombol navigasi bagian
                 const targetId = e.target.dataset.target;
                 setActiveSection(targetId);
             }
@@ -280,6 +287,7 @@
         // Populate Analisis Pasar
         function populatePopularStyles() {
             const container = document.getElementById('popularStylesContent');
+            if (!container) return;
             reportData.popularStyles.forEach(style => {
                 const styleDiv = document.createElement('div');
                 styleDiv.className = 'mb-3 p-3 border border-gray-200 rounded-md bg-gray-50';
@@ -303,8 +311,9 @@
         }
 
         function renderStylePopularityChart() {
-            const ctx = document.getElementById('stylePopularityChart').getContext('2d');
-            new Chart(ctx, {
+            const ctx = document.getElementById('stylePopularityChart');
+            if (!ctx) return;
+            new Chart(ctx.getContext('2d'), {
                 type: 'bar',
                 data: {
                     labels: reportData.stylePopularityData.labels.map(label => label.length > 16 ? label.substring(0, 13) + '...' : label),
@@ -353,6 +362,7 @@
         
         function populateColorTrends() {
             const container = document.getElementById('colorTrendsContent');
+            if (!container) return;
             reportData.colorTrends.forEach(trend => {
                 const colorDiv = document.createElement('div');
                 colorDiv.className = 'p-3 rounded-md shadow-sm flex flex-col items-center justify-center text-center h-24';
@@ -364,6 +374,7 @@
 
         function populatePatternTrends() {
             const container = document.getElementById('patternTrendsContent');
+            if(!container) return;
             reportData.patternTrends.forEach(pattern => {
                 const listItem = document.createElement('li');
                 listItem.textContent = pattern;
@@ -373,6 +384,7 @@
         
         function populateSuccessFactors() {
             const container = document.getElementById('successFactorsContent');
+            if (!container) return;
             reportData.successFactors.forEach(factor => {
                 const factorDiv = document.createElement('div');
                 factorDiv.innerHTML = `
@@ -397,6 +409,7 @@
         let allCategories = ['all'];
 
         function renderDesignIdeas(filter = 'all') {
+            if (!designIdeasContainer) return;
             designIdeasContainer.innerHTML = '';
             const filteredIdeas = filter === 'all' ? reportData.designIdeas : reportData.designIdeas.filter(idea => idea.category.toLowerCase().includes(filter.toLowerCase()));
             
@@ -413,7 +426,7 @@
             });
         }
 
-        if (designIdeasContainer) {
+        if (designIdeasContainer && ideaFiltersContainer) {
             reportData.designIdeas.forEach(idea => {
                 if (!allCategories.includes(idea.category)) {
                     allCategories.push(idea.category);
@@ -430,15 +443,12 @@
             
             ideaFiltersContainer.addEventListener('click', (e) => {
                 if (e.target.classList.contains('filter-button')) {
-                    document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active', 'bg-teal-500', 'text-white'));
-                    document.querySelectorAll('.filter-button').forEach(btn => {
-                        if (!btn.classList.contains('active')) {
-                             btn.classList.add('bg-gray-200', 'text-gray-700');
-                        }
+                    document.querySelectorAll('#ideaFiltersContainer .filter-button').forEach(btn => {
+                        btn.classList.remove('active', 'bg-teal-500', 'text-white');
+                        btn.classList.add('bg-gray-200', 'text-gray-700');
                     });
-                    e.target.classList.add('active');
+                    e.target.classList.add('active','bg-teal-500', 'text-white');
                     e.target.classList.remove('bg-gray-200', 'text-gray-700');
-                    e.target.classList.add('bg-teal-500', 'text-white');
                     renderDesignIdeas(e.target.dataset.filter);
                 }
             });
@@ -448,6 +458,7 @@
         // Populate Teknik Desain
         function populateDesignTechniques() {
             const container = document.getElementById('designTechniquesContent');
+            if(!container) return;
             reportData.designTechniques.forEach(technique => {
                 const sectionDiv = document.createElement('div');
                 sectionDiv.className = 'mb-3 p-3 border border-gray-200 rounded-md bg-gray-50';
@@ -468,6 +479,7 @@
         // Populate Pemasaran & Penjualan
         function populateMarketingStrategies() {
             const container = document.getElementById('marketingStrategiesContent');
+            if(!container) return;
             reportData.marketingStrategies.forEach(strategy => {
                 const strategyDiv = document.createElement('div');
                 strategyDiv.className = 'mb-3 p-3 border border-gray-200 rounded-md bg-gray-50';
@@ -483,6 +495,7 @@
         // Populate Kesimpulan & Tips
         function populateConclusion() {
             const container = document.getElementById('conclusionContent');
+            if(!container) return;
             reportData.conclusionContent.forEach(item => {
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'mb-3 p-3 border border-gray-200 rounded-md bg-gray-50';

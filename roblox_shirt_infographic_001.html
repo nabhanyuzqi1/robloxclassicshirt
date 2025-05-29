@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografis: Tren Kemeja Klasik Roblox</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Visualization & Content Choices:
+        - Popular Styles: Report Info: Dominant styles (Y2K, Emo, Streetwear). Goal: Compare. Viz: Chart.js Bar Chart (Canvas). Justification: Shows relative prominence. Library: Chart.js. NO SVG/Mermaid.
+        - Color Palettes: Report Info: Predicted 2025 colors. Goal: Inform. Viz: HTML divs with background colors. Justification: Direct visual display. Method: HTML/CSS. NO SVG/Mermaid.
+        - Pattern Trends: Report Info: Popular patterns. Goal: Inform. Viz: HTML list. Justification: Clear textual display. Method: HTML/CSS. NO SVG/Mermaid.
+        - Success Factors: Report Info: Quality, Discoverability, Price, Marketing. Goal: Organize/Inform. Viz: HTML cards. Justification: Presents distinct info blocks clearly. Method: HTML/CSS. NO SVG/Mermaid.
+        - Design Ideas: Report Info: Sample ideas from Table 2. Goal: Inform. Viz: HTML cards. Justification: Showcases examples effectively. Method: HTML/CSS. NO SVG/Mermaid.
+        - Design Techniques: Report Info: Shading, Textures. Goal: Inform. Viz: HTML list/descriptions. Justification: Explains key methods. Method: HTML/CSS. NO SVG/Mermaid.
+        - Marketing Strategies: Report Info: SEO, Homestore. Goal: Inform. Viz: HTML list/descriptions. Justification: Outlines key actions. Method: HTML/CSS. NO SVG/Mermaid.
+        -->
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        .chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 350px; max-height: 450px; }
+        @media (min-width: 768px) { .chart-container { height: 400px; } }
+        .stat-card { background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); padding: 1.5rem; margin-bottom: 1.5rem; }
+        .section-title { color: #9C27B0; } /* Purple */
+        .sub-section-title { color: #F9A826; } /* Orange */
+        .highlight-text { color: #E91E63; } /* Pink */
+        .color-palette-item { width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; text-align: center; color: white; font-weight: bold; border-radius: 0.375rem; padding: 0.5rem; font-size: 0.8rem;}
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800 font-inter">
+
+    <header class="bg-[#9C27B0] text-white py-12 text-center">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-3">Riset Tren Kemeja Klasik Roblox</h1>
+            <p class="text-lg md:text-xl">Mengungkap Gaya Populer, Ide Desain, & Strategi Sukses</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="intro" class="mb-12 text-center">
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto">Selamat datang di analisis mendalam pasar Kemeja Klasik Roblox. Infografis ini menyajikan tren terkini, preferensi pemain, dan ide desain untuk membantu Anda menciptakan *skin* yang menarik dan laris di pasar virtual yang dinamis ini.</p>
+        </section>
+
+        <section id="popular-styles" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center section-title">Dominasi Tren Gaya di Roblox</h2>
+            <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">Pasar Kemeja Klasik Roblox diramaikan oleh berbagai gaya yang mencerminkan mode dunia nyata dan subkultur internet. Berikut adalah gambaran gaya-gaya yang paling menonjol:</p>
+            <div class="chart-container mb-10">
+                <canvas id="popularStylesChart"></canvas>
+            </div>
+            <p class="text-center text-gray-600 mb-10">Grafik di atas menunjukkan perkiraan popularitas relatif gaya-gaya utama. Y2K, Emo/Grunge, dan Streetwear mendominasi, namun gaya lain juga memiliki pangsa pasar yang signifikan dan komunitas penggemar yang setia.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="stat-card">
+                    <h3 class="text-2xl font-semibold sub-section-title mb-3">🎨 Y2K (Tahun 2000-an Awal)</h3>
+                    <p class="text-gray-700 mb-2">Estetika nostalgia dengan atasan *crop*, grafis berani, warna cerah (pink, hijau, biru), dan sentuhan metalik.</p>
+                    <p class="text-sm text-gray-600 font-semibold">Sub-gaya: McBling, Cyber Y2K, Pop Princess.</p>
+                </div>
+                <div class="stat-card">
+                    <h3 class="text-2xl font-semibold sub-section-title mb-3">🖤 Emo & Grunge</h3>
+                    <p class="text-gray-700 mb-2">Dominasi warna gelap (hitam, putih, abu-abu), motif tengkorak, mawar, salib, rantai, dan tampilan berlapis atau robek.</p>
+                    <p class="text-sm text-gray-600 font-semibold">Sub-gaya: Pastel Goth, Nu Metal/Mall Goth.</p>
+                </div>
+                <div class="stat-card">
+                    <h3 class="text-2xl font-semibold sub-section-title mb-3">👟 Streetwear</h3>
+                    <p class="text-gray-700 mb-2">Kaos kebesaran, *hoodies*, inspirasi olahraga (jersey), logo merek (nyata/fiksi), dan slogan.</p>
+                    <p class="text-sm text-gray-600 font-semibold">Kunci: Ekspresi diri & afiliasi merek.</p>
+                </div>
+                 <div class="stat-card">
+                    <h3 class="text-2xl font-semibold sub-section-title mb-3">🎀 Lucu & Minimalis</h3>
+                    <p class="text-gray-700 mb-2">Desain karakter menggemaskan (mis. Hello Kitty), blok warna polos, dan daya tarik visual yang bersih.</p>
+                     <p class="text-sm text-gray-600 font-semibold">Populer: Serbaguna & mudah dipadupadankan.</p>
+                </div>
+                <div class="stat-card">
+                    <h3 class="text-2xl font-semibold sub-section-title mb-3">🕰️ Vintage & Terinspirasi Merek</h3>
+                    <p class="text-gray-700 mb-2">Logo Roblox lama, item ikonik (Bloxy Cola), inspirasi merek dunia nyata (Adidas, Nike).</p>
+                    <p class="text-sm text-gray-600 font-semibold">Kekuatan: Nostalgia & afiliasi merek.</p>
+                </div>
+                <div class="stat-card">
+                    <h3 class="text-2xl font-semibold sub-section-title mb-3">🌟 Anime & K-Pop</h3>
+                    <p class="text-gray-700 mb-2">Terinspirasi serial anime populer (Jujutsu Kaisen) dan grup K-Pop (BTS, Blackpink). Mencakup logo dan pakaian panggung.</p>
+                    <p class="text-sm text-gray-600 font-semibold">Fokus: Ekspresi *fandom* visual.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="color-pattern-trends" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center section-title">Warna & Pola Penggerak Tren (2024-2025)</h2>
+            <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">Selain gaya, warna dan pola spesifik turut mendominasi, seringkali mencerminkan tren mode dunia nyata. Desainer yang proaktif menggabungkan tren ini dapat menarik pemain yang mencari gaya terbaru.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-semibold sub-section-title mb-4">Prediksi Palet Warna 2025</h3>
+                    <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                        <div class="color-palette-item" style="background-color: #4A5D23;">Dark & Mossy</div>
+                        <div class="color-palette-item text-black" style="background-color: #FFFF8F;">Piercing Canary</div>
+                        <div class="color-palette-item text-black" style="background-color: #C8A2C8;">Hyperpop Lilac</div>
+                        <div class="color-palette-item text-black" style="background-color: #32CD32;">Hyperpop Brat Green</div>
+                        <div class="color-palette-item" style="background-color: #E0218A;">Hyperpop Barbie Pink</div>
+                        <div class="color-palette-item" style="background-color: #A1887F;">Two-Tone Riverbed</div>
+                        <div class="color-palette-item" style="background-color: #BF2222;">Burning Red (Aksen)</div>
+                        <div class="color-palette-item text-black" style="background-color: #E2725B;">Grounding Tones</div>
+                    </div>
+                     <p class="mt-4 text-gray-600 text-sm">Warna-warna ini diprediksi akan populer, menawarkan peluang bagi desainer untuk menciptakan kemeja yang menonjol dan relevan.</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold sub-section-title mb-4">Pola Populer yang Bertahan & Muncul</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2 bg-white p-4 rounded-lg shadow">
+                        <li>Logo (merek nyata/fiksi, terutama Streetwear & Y2K)</li>
+                        <li>Grafis karakter (Anime, Hello Kitty)</li>
+                        <li>Garis-garis (sporty/kasual)</li>
+                        <li>Pola geometris abstrak & cetakan retro/vintage</li>
+                        <li>Kotak-kotak ala 90-an (Plaid '90s)</li>
+                        <li>Motif bunga (Chintz, sulaman)</li>
+                        <li>Pola bandana & Pola hewani (macan tutul)</li>
+                    </ul>
+                    <p class="mt-4 text-gray-600 text-sm">Pola-pola ini menambah dimensi visual dan narasi pada desain kemeja, menarik bagi berbagai preferensi pemain.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="success-factors" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center section-title">Kunci Sukses di Pasar Kemeja Klasik</h2>
+             <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">Keberhasilan menjual Kemeja Klasik di Roblox tidak hanya bergantung pada desain, tetapi juga pemahaman pasar dan strategi yang tepat.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="stat-card">
+                    <h3 class="text-xl font-semibold highlight-text mb-2">🏆 Kualitas Desain</h3>
+                    <p class="text-gray-700">Penggunaan *shading* efektif, perhatian detail, orisinalitas. Pemain menghargai upaya dan kreativitas.</p>
+                </div>
+                <div class="stat-card">
+                    <h3 class="text-xl font-semibold highlight-text mb-2">🔍 Penemuan (*Discoverability*)</h3>
+                    <p class="text-gray-700">Nama & deskripsi kaya kata kunci (Y2K, emo, aesthetic). Ikon item jelas. Algoritma Roblox memengaruhi visibilitas.</p>
+                </div>
+                <div class="stat-card">
+                    <h3 class="text-xl font-semibold highlight-text mb-2">💰 Harga Strategis</h3>
+                    <p class="text-gray-700">Harga minimum 5 Robux. Biaya unggah 10 Robux/item. Pertimbangkan harga awal untuk menarik pembeli.</p>
+                </div>
+                <div class="stat-card">
+                    <h3 class="text-xl font-semibold highlight-text mb-2">📣 Pemasaran & Komunitas</h3>
+                    <p class="text-gray-700">Promosi di media sosial (TikTok, YouTube), grup Roblox & Discord. Bangun *homestore* untuk pengalaman mencoba.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="design-ideas" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center section-title">Ide Desain Unggulan untuk Dicoba</h2>
+            <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">Berikut adalah beberapa konsep desain spesifik yang dapat Anda eksplorasi, berdasarkan tren yang sedang populer:</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="stat-card">
+                    <h4 class="text-xl font-semibold sub-section-title mb-2">Y2K: McBling Statement Tee</h4>
+                    <p class="text-gray-700 text-sm">Kaos *baby tee* pink dengan slogan "Queen" berhias *rhinestones* semu. Target: Pemain glamor, nostalgia Y2K.</p>
+                </div>
+                <div class="stat-card">
+                    <h4 class="text-xl font-semibold sub-section-title mb-2">Emo: Pastel Goth Hybrid</h4>
+                    <p class="text-gray-700 text-sm">Kaos lavender dengan grafis kucing hitam kartun lucu memegang tengkorak kecil. Target: Penyuka perpaduan gelap & imut.</p>
+                </div>
+                <div class="stat-card">
+                    <h4 class="text-xl font-semibold sub-section-title mb-2">Streetwear: Merek Virtual Hoodie</h4>
+                    <p class="text-gray-700 text-sm">*Hoodie oversized* (sebagai kemeja) warna "Dark and Mossy" dengan logo merek fiksi "VRTX". Target: Penyuka gaya kasual, modern.</p>
+                </div>
+                <div class="stat-card">
+                    <h4 class="text-xl font-semibold sub-section-title mb-2">Niche: Goblincore Mushroom Tee</h4>
+                    <p class="text-gray-700 text-sm">Kemeja hijau lumut dengan detail jamur sulaman semu dan saku tambalan. Target: Penyuka alam, estetika *DIY*.</p>
+                </div>
+                 <div class="stat-card">
+                    <h4 class="text-xl font-semibold sub-section-title mb-2">Anime Inspired: School Uniform Top</h4>
+                    <p class="text-gray-700 text-sm">Kemeja putih dengan kerah pelaut biru dan dasi merah, emblem sekolah fiksi. Target: Penggemar anime, *cosplay*.</p>
+                </div>
+                 <div class="stat-card">
+                    <h4 class="text-xl font-semibold sub-section-title mb-2">Dark Academia: Argyle Vest Combo</h4>
+                    <p class="text-gray-700 text-sm">Kemeja putih dengan ilusi rompi *tweed* coklat dan dasi kupu-kupu. Target: Penyuka estetika klasik, intelektual.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="design-techniques" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center section-title">Teknik Desain Peningkat Visual</h2>
+            <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">Meskipun 2D, Kemeja Klasik dapat terlihat menakjubkan dengan teknik yang tepat untuk menciptakan ilusi kedalaman dan tekstur.</p>
+            <div class="bg-white p-6 rounded-lg shadow">
+                <ul class="space-y-4">
+                    <li>
+                        <h4 class="text-lg font-semibold highlight-text">Tekstur Realistis (Disimulasikan)</h4>
+                        <p class="text-gray-700 text-sm">Ciptakan ilusi denim, sutra, wol, atau renda dengan *shading* dan detail jahitan. Efek metalik atau bulu juga bisa disimulasikan.</p>
+                    </li>
+                    <li>
+                        <h4 class="text-lg font-semibold highlight-text">Efek 3D Semu (*Trompe-l'œil*)</h4>
+                        <p class="text-gray-700 text-sm">Gunakan *shading* & *highlight* cermat agar elemen 2D tampak tiga dimensi (kerah menonjol, saku dalam, dasi tergantung).</p>
+                    </li>
+                    <li>
+                        <h4 class="text-lg font-semibold highlight-text">Shading & Detail Halus</h4>
+                        <p class="text-gray-700 text-sm">Kuasai *shading* untuk kedalaman. Tambahkan detail kecil seperti jahitan, kancing, dan kerutan kain untuk kualitas yang lebih tinggi.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="marketing-strategies" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center section-title">Strategi Pemasaran Efektif</h2>
+            <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">Membuat kemeja hebat adalah langkah awal. Strategi pemasaran yang tepat akan membantu kemeja Anda ditemukan dan laris terjual.</p>
+            <div class="bg-white p-6 rounded-lg shadow">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-lg font-semibold highlight-text mb-2">🚀 SEO Roblox</h4>
+                        <p class="text-gray-700 text-sm">Gunakan nama, deskripsi, dan kata kunci relevan (Y2K, Emo, Aesthetic, nama anime) agar mudah ditemukan.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold highlight-text mb-2">🏠 Homestore & Visual</h4>
+                        <p class="text-gray-700 text-sm">Buat *homestore* agar pemain bisa "mencoba" pakaian. Ikon item yang jelas juga penting.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold highlight-text mb-2">📱 Media Sosial</h4>
+                        <p class="text-gray-700 text-sm">Promosikan di TikTok, Instagram, YouTube (video *speed design*, *showcase* avatar).</p>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold highlight-text mb-2">🤝 Komunitas</h4>
+                        <p class="text-gray-700 text-sm">Terlibat di grup Roblox, server Discord, dan DevForum untuk *feedback* dan promosi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#1E88E5] text-white py-8 text-center mt-12">
+        <p class="text-sm">&copy; <span id="currentYear"></span> Infografis Tren Kemeja Klasik Roblox. Dibuat untuk tujuan analisis dan inspirasi.</p>
+        <p class="text-xs mt-1">Berdasarkan laporan riset mendalam.</p>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        function processLabels(labels) {
+            return labels.map(label => {
+                if (label.length > 16) {
+                    const words = label.split(' ');
+                    const lines = [];
+                    let currentLine = '';
+                    for (const word of words) {
+                        if ((currentLine + word).length > 16 && currentLine.length > 0) {
+                            lines.push(currentLine.trim());
+                            currentLine = word + ' ';
+                        } else {
+                            currentLine += word + ' ';
+                        }
+                    }
+                    lines.push(currentLine.trim());
+                    return lines;
+                }
+                return label;
+            });
+        }
+        
+        const popularStylesCtx = document.getElementById('popularStylesChart').getContext('2d');
+        const popularStylesData = {
+            labels: processLabels(["Y2K", "Emo & Grunge", "Streetwear", "Lucu & Minimalis", "Vintage & Merek", "Anime & K-Pop"]),
+            datasets: [{
+                label: 'Perkiraan Popularitas Relatif',
+                data: [30, 25, 20, 10, 8, 7], 
+                backgroundColor: [
+                    '#E91E63', // Pink
+                    '#9C27B0', // Purple
+                    '#2196F3', // Blue
+                    '#F9A826', // Orange
+                    '#FDD835', // Yellow
+                    '#4CAF50'  // Green (additional color from a playful palette)
+                ],
+                borderColor: [
+                    '#C2185B',
+                    '#7B1FA2',
+                    '#1976D2',
+                    '#F57F17',
+                    '#FBC02D',
+                    '#388E3C'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        new Chart(popularStylesCtx, {
+            type: 'bar',
+            data: popularStylesData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Skor Popularitas Relatif (Arbitrer)'
+                        }
+                    },
+                    y: {
+                         ticks: {
+                            font: {
+                                size: 10
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false 
+                    },
+                    title: {
+                        display: true,
+                        text: 'Popularitas Relatif Gaya Kemeja Utama',
+                        font: {
+                            size: 16
+                        },
+                        padding: {
+                            top: 10,
+                            bottom: 20
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            },
+                            label: function(context) {
+                                return ` Skor: ${context.raw}`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
