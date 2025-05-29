@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPA Interaktif: Tren Kemeja Klasik Roblox</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Visualization & Content Choices:
+        - Analisis Pasar (Gaya Populer - Chart): Goal: Compare perceived popularity of main styles. Viz: Chart.js Bar Chart (Canvas). Interaction: Hover for tooltips. Justification: Quick visual comparison of trend dominance. Library: Chart.js.
+        - Analisis Pasar (Gaya Populer Details, Sub-Gaya, Tren Warna & Pola, Faktor Keberhasilan): Goal: Inform on specific details. Presentation: Accordions/expandable sections and styled lists/cards. Interaction: Click to expand/collapse. Justification: Organized presentation of detailed text, manages space. Method: HTML/JS.
+        - Ide Desain (Table 2 content): Goal: Organize and allow exploration of design ideas. Presentation: Filterable HTML cards. Interaction: Click filter buttons to show relevant cards. Justification: Enables users to easily find specific ideas. Method: HTML/JS.
+        - Teknik Desain, Pemasaran & Penjualan, Kesimpulan & Tips (Textual Content): Goal: Inform. Presentation: Accordions/expandable text blocks. Interaction: Click to expand/collapse. Justification: Manages large amounts of text, improves readability and navigation. Method: HTML/JS.
+        - CONFIRMING NO SVG/Mermaid. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        .active-nav { background-color: #0D9488; color: white; }
+        .inactive-nav { background-color: #F0F9F9; color: #14B8A6; }
+        .inactive-nav:hover { background-color: #CCFBF1; }
+        .content-section { display: none; }
+        .content-section.active { display: block; }
+        .accordion-button.active { background-color: #CCFBF1; }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .chart-container { position: relative; width: 100%; max-width: 700px; margin-left: auto; margin-right: auto; height: 350px; max-height: 400px; }
+        @media (min-width: 768px) { .chart-container { height: 400px; } }
+        .filter-button.active { background-color: #0D9488; color: white; }
+        .idea-card {
+            border: 1px solid #E0E0E0;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background-color: white;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .idea-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800 font-inter">
+
+    <header class="bg-teal-700 text-white p-6 shadow-md sticky top-0 z-50">
+        <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center">
+            <h1 class="text-2xl font-bold mb-4 sm:mb-0">Tren Kemeja Klasik Roblox & Ide Desain</h1>
+            <nav id="mainNav" class="flex flex-wrap justify-center gap-2">
+                <button data-target="beranda" class="nav-link px-4 py-2 rounded-md text-sm font-medium transition-colors duration-150 active-nav">Beranda</button>
+                <button data-target="analisisPasar" class="nav-link px-4 py-2 rounded-md text-sm font-medium transition-colors duration-150 inactive-nav">Analisis Pasar</button>
+                <button data-target="ideDesain" class="nav-link px-4 py-2 rounded-md text-sm font-medium transition-colors duration-150 inactive-nav">Ide Desain</button>
+                <button data-target="teknikDesain" class="nav-link px-4 py-2 rounded-md text-sm font-medium transition-colors duration-150 inactive-nav">Teknik Desain</button>
+                <button data-target="pemasaranPenjualan" class="nav-link px-4 py-2 rounded-md text-sm font-medium transition-colors duration-150 inactive-nav">Pemasaran</button>
+                <button data-target="kesimpulanTips" class="nav-link px-4 py-2 rounded-md text-sm font-medium transition-colors duration-150 inactive-nav">Kesimpulan</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 sm:p-6 lg:p-8">
+        
+        <section id="beranda" class="content-section active bg-white p-6 rounded-lg shadow">
+            <h2 class="text-3xl font-semibold text-teal-700 mb-4">Selamat Datang!</h2>
+            <p class="text-lg mb-3">Aplikasi ini adalah panduan interaktif Anda untuk memahami laporan "Riset Tren Kemeja Klasik Roblox dan Ide Desain untuk Dijual".</p>
+            <p class="mb-3">Di sini, Anda dapat menjelajahi analisis pasar terkini, menemukan ide-ide desain yang sedang tren, mempelajari teknik desain untuk meningkatkan daya tarik visual, memahami strategi pemasaran yang efektif, dan mendapatkan tips praktis untuk memulai atau mengembangkan bisnis desain Kemeja Klasik Anda di Roblox.</p>
+            <p>Gunakan navigasi di atas untuk berpindah antar bagian. Setiap bagian dirancang untuk memberikan informasi secara terstruktur dan mudah diakses. Selamat menjelajah!</p>
+        </section>
+
+        <section id="analisisPasar" class="content-section bg-white p-6 rounded-lg shadow">
+            <h2 class="text-3xl font-semibold text-teal-700 mb-6">Bagian 1: Analisis Pasar Kemeja Klasik Roblox Saat Ini</h2>
+            <p class="mb-6 text-gray-700">Bagian ini menyelami lanskap pasar Kemeja Klasik Roblox saat ini, mengidentifikasi gaya-gaya yang mendominasi dan elemen-elemen visual yang menarik perhatian pemain. Pemahaman ini krusial sebagai fondasi untuk merancang kemeja yang tidak hanya kreatif tetapi juga memiliki potensi komersial di platform Roblox.</p>
+
+            <div class="accordion-item mb-4">
+                <button class="accordion-button w-full text-left bg-teal-50 hover:bg-teal-100 text-teal-700 font-semibold p-4 rounded-md focus:outline-none transition-colors duration-150">
+                    Sub-bagian 1.1: Gaya Paling Populer dan Elemen Visualnya
+                </button>
+                <div class="accordion-content bg-white border border-t-0 border-gray-200 rounded-b-md p-4">
+                    <p class="mb-4">Pasar Kemeja Klasik di Roblox didominasi oleh beberapa gaya utama. Berikut adalah visualisasi perkiraan popularitas gaya-gaya tersebut, diikuti dengan detail masing-masing gaya.</p>
+                    <div class="chart-container mb-8">
+                        <canvas id="stylePopularityChart"></canvas>
+                    </div>
+                    <div id="popularStylesContent" class="space-y-4"></div>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-4">
+                <button class="accordion-button w-full text-left bg-teal-50 hover:bg-teal-100 text-teal-700 font-semibold p-4 rounded-md focus:outline-none transition-colors duration-150">
+                    Sub-bagian 1.2: Tren Warna dan Pola yang Sedang Naik Daun untuk 2024-2025
+                </button>
+                <div class="accordion-content bg-white border border-t-0 border-gray-200 rounded-b-md p-4">
+                    <h4 class="text-xl font-semibold text-teal-600 mb-3">Warna Dominan dan Palet yang Muncul (Prediksi 2025):</h4>
+                    <div id="colorTrendsContent" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-6"></div>
+                    <h4 class="text-xl font-semibold text-teal-600 mb-3">Pola Populer:</h4>
+                    <ul id="patternTrendsContent" class="list-disc list-inside space-y-1"></ul>
+                </div>
+            </div>
+
+            <div class="accordion-item mb-4">
+                <button class="accordion-button w-full text-left bg-teal-50 hover:bg-teal-100 text-teal-700 font-semibold p-4 rounded-md focus:outline-none transition-colors duration-150">
+                    Sub-bagian 1.3: Faktor Kunci Keberhasilan Penjualan
+                </button>
+                <div id="successFactorsContent" class="accordion-content bg-white border border-t-0 border-gray-200 rounded-b-md p-4 space-y-3">
+                </div>
+            </div>
+        </section>
+
+        <section id="ideDesain" class="content-section bg-white p-6 rounded-lg shadow">
+            <h2 class="text-3xl font-semibold text-teal-700 mb-6">Bagian 2: Merancang Kemeja Klasik Roblox yang Laris Manis</h2>
+             <p class="mb-6 text-gray-700">Setelah memahami tren pasar, bagian ini berfokus pada strategi praktis dan ide-ide desain konkret. Gunakan filter di bawah untuk menjelajahi ide berdasarkan tren populer.</p>
+            <div id="ideaFiltersContainer" class="flex flex-wrap gap-2 mb-6">
+                <button class="filter-button px-4 py-2 bg-teal-500 text-white rounded-md hover:bg-teal-600 active" data-filter="all">Semua</button>
+            </div>
+            <div id="designIdeasContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+        </section>
+
+        <section id="teknikDesain" class="content-section bg-white p-6 rounded-lg shadow">
+            <h2 class="text-3xl font-semibold text-teal-700 mb-6">Sub-bagian 2.2: Teknik Desain untuk Meningkatkan Daya Tarik Visual</h2>
+            <p class="mb-6 text-gray-700">Meskipun Kemeja Klasik Roblox adalah aset 2D, berbagai teknik desain dapat digunakan untuk menciptakan ilusi kedalaman, tekstur, dan detail yang rumit, sehingga meningkatkan daya tarik visualnya secara signifikan.</p>
+            <div id="designTechniquesContent" class="space-y-3"></div>
+        </section>
+
+        <section id="pemasaranPenjualan" class="content-section bg-white p-6 rounded-lg shadow">
+            <h2 class="text-3xl font-semibold text-teal-700 mb-6">Sub-bagian 2.3: Strategi Pemasaran dan Penjualan untuk Kemeja Anda</h2>
+            <p class="mb-6 text-gray-700">Membuat Kemeja Klasik yang hebat hanyalah langkah awal. Agar kemeja tersebut laris terjual, diperlukan strategi pemasaran dan penjualan yang efektif.</p>
+            <div id="marketingStrategiesContent" class="space-y-3"></div>
+        </section>
+
+        <section id="kesimpulanTips" class="content-section bg-white p-6 rounded-lg shadow">
+            <h2 class="text-3xl font-semibold text-teal-700 mb-6">Bagian 3: Kesimpulan dan Rekomendasi Langkah Selanjutnya</h2>
+            <p class="mb-6 text-gray-700">Bagian terakhir ini merangkum temuan-temuan utama, memberikan pandangan ke depan, dan menawarkan rekomendasi praktis bagi Anda untuk memulai perjalanan desain Kemeja Klasik di Roblox.</p>
+            <div id="conclusionContent" class="space-y-3"></div>
+        </section>
+    </main>
+
+    <footer class="text-center p-6 mt-10 border-t border-stone-300">
+        <p class="text-sm text-stone-600">Aplikasi Interaktif Riset Kemeja Klasik Roblox. Dibuat untuk eksplorasi data.</p>
+    </footer>
+
+<script>
+    const reportData = {
+        popularStyles: [
+            { name: "Y2K (Umum)", visual: "Atasan crop, grafis berani, elemen futuristik/retro.", colors: "Pink, hijau, ungu, biru cerah, metalik.", motifs: "Logo, pola abstrak, kupu-kupu, bintang.", subs: [
+                { name: "McBling", visual: "Sangat feminin, bling, slogan centil.", colors: "Dominan pink, silver, emas.", motifs: "Rhinestones, mahkota, tulisan 'Princess'."},
+                { name: "Cyber Y2K", visual: "Futuristik, teknologi, ramping.", colors: "Biru metalik, perak, hitam, neon.", motifs: "Pola sirkuit, garis digital, efek glitch."},
+                { name: "Pop Princess", visual: "Terinspirasi ikon pop wanita awal 2000-an.", colors: "Pastel, pink cerah, glitter.", motifs: "Bintang, mikrofon, grafis lucu."}
+            ]},
+            { name: "Emo & Grunge (Umum)", visual: "Warna gelap, tampilan berlapis, robek/usang.", colors: "Hitam, putih, abu-abu, merah tua.", motifs: "Tengkorak, mawar gelap, salib, rantai.", subs: [
+                { name: "Pastel Goth", visual: "Perpaduan elemen goth dengan warna lembut.", colors: "Lavender, pink muda, hitam.", motifs: "Tengkorak imut, kelelawar kartun."},
+                { name: "Nu Metal/Mall Goth", visual: "Lebih berat, edgy, pengaruh punk/metal.", colors: "Dominan hitam, abu-abu gelap.", motifs: "Rantai, stud, logo band metal fiksi."}
+            ]},
+            { name: "Streetwear", visual: "Kaos kebesaran, hoodies, terinspirasi olahraga, logo.", colors: "Bervariasi; netral hingga cerah.", motifs: "Logo besar, slogan, grafis urban." , subs: []},
+            { name: "Lucu & Minimalis", visual: "Desain karakter (Hello Kitty), blok warna sederhana.", colors: "Cerah, pastel, monokromatik.", motifs: "Karakter Sanrio, hewan imut, geometris." , subs: []},
+            { name: "Vintage & Terinspirasi Merek", visual: "Logo Roblox lama, item ikonik (Bloxy Cola), inspirasi merek nyata.", colors: "Sesuai merek/item asli.", motifs: "Logo Roblox lama, grafis Bloxy Cola." , subs: []},
+            { name: "Anime & Budaya Pop", visual: "Terinspirasi serial anime populer (Jujutsu Kaisen, Chainsaw Man).", colors: "Sesuai karakter/serial.", motifs: "Gambar karakter (disamarkan), simbol ikonik." , subs: []},
+            { name: "K-Pop", visual: "Terinspirasi idola K-Pop; logo grup, pakaian panggung.", colors: "Sesuai warna grup/konsep.", motifs: "Logo grup K-Pop (variasi), elemen panggung." , subs: []}
+        ],
+        stylePopularityData: {
+            labels: ["Y2K", "Emo & Grunge", "Streetwear", "Lucu & Min.", "Vintage", "Anime", "K-Pop"],
+            data: [25, 22, 20, 12, 8, 7, 6] // Perkiraan berdasarkan penekanan laporan
+        },
+        colorTrends: [
+            { name: "Dark and Mossy", color: "#3B5323", textLight: true }, // Example hex
+            { name: "Piercing Canary", color: "#FFFF8F", textLight: false },
+            { name: "Hyperpop (Lilac)", color: "#C8A2C8", textLight: false },
+            { name: "Hyperpop (Sky Blue)", color: "#87CEEB", textLight: false },
+            { name: "Hyperpop (Brat Green)", color: "#32CD32", textLight: false },
+            { name: "Hyperpop (Barbie Pink)", color: "#E0218A", textLight: true },
+            { name: "Two-Tone Riverbed", color: "#A1887F", textLight: true }, // earthy
+            { name: "Box of Crayons (Red)", color: "#FF0000", textLight: true },
+            { name: "Orange Peel Garnish", color: "#FFA500", textLight: false },
+            { name: "Electric Flamingo", color: "#FC74FD", textLight: false },
+            { name: "Burning Red (Aksen)", color: "#BF2222", textLight: true },
+            { name: "Grounding Tones (Terakota)", color: "#E2725B", textLight: false },
+            { name: "Sunny and Bright (Kuning)", color: "#FFFACD", textLight: false },
+            { name: "Ethereal Tones (Pastel)", color: "#E6E6FA", textLight: false },
+            { name: "Sea to Sky (Biru)", color: "#ADD8E6", textLight: false },
+            { name: "Monokromatik", color: "#777777", textLight: true }
+        ],
+        patternTrends: [
+            "Logo (merek nyata/fiksi)", "Grafis karakter (Anime, Hello Kitty)", "Garis-garis (sporty/kasual)",
+            "Pola geometris abstrak", "Cetakan retro/vintage", "Kotak-kotak ala 90-an (Plaid '90s)",
+            "Motif bunga (Chintz, sulaman)", "Pola bandana", "Pola hewani (macan tutul)"
+        ],
+        successFactors: [
+            { title: "Kualitas Desain", content: "Penggunaan shading efektif, perhatian detail, orisinalitas. Pemain menghargai upaya dan kreativitas." },
+            { title: "Penemuan (Discoverability)", content: "Nama & deskripsi kaya kata kunci (Y2K, emo, aesthetic, dll.). Ikon item jelas. Algoritma Roblox memengaruhi visibilitas." },
+            { title: "Harga", content: "Minimum 5 Robux. Biaya unggah 10 Robux/item. Komisi kreator 60-70%." },
+            { title: "Pemasaran & Komunitas", content: "Promosi di TikTok, Instagram, YouTube. Terlibat di grup Roblox & Discord. Bangun homestore. Kolaborasi." }
+        ],
+        designIdeas: [
+            // Data dari Tabel 2 laporan
+            { category: "Y2K", name: "Y2K Minimalist Crop", details: "Atasan crop top warna solid (kuning 'Piercing Canary' atau pink 'Electric Flamingo') dengan logo kecil merek desainer fiktif.", motifs: "Logo kecil, warna cerah/pastel.", audience: "Pemain yang suka gaya bersih, modern, Y2K." },
+            { category: "Y2K", name: "McBling Statement Tee", details: "Kaos baby tee dengan slogan centil ('Princess', 'Diva') dalam font Y2K, hiasan tekstur berlian imitasi/glitter semu.", motifs: "Slogan, glitter, rhinestones.", audience: "Pemain yang suka feminin, glamor, menonjol." },
+            { category: "Y2K", name: "Cyber Runner Shirt", details: "Kemeja biru metalik & perak dengan garis abstrak bercahaya atau pola sirkuit halus.", motifs: "Pola sirkuit, garis digital.", audience: "Penyuka futurisme, teknologi." },
+            { category: "Y2K", name: "Pop Princess Graphic Tee", details: "Kemeja dengan grafis terinspirasi ikon pop awal 2000-an (siluet, kutipan modifikasi, palet warna khas).", motifs: "Siluet, kutipan, warna ikonik.", audience: "Penggemar ikon pop Y2K." },
+            { category: "Emo", name: "Monochrome Skull/Rose Tee", details: "Kemeja hitam klasik dengan grafis tengkorak/mawar detail warna putih/abu-abu, efek retak halus.", motifs: "Tengkorak, mawar, efek usang.", audience: "Penyuka gaya Emo klasik, detail." },
+            { category: "Emo", name: "Subtle Grunge Layers", details: "Ilusi lapisan: kaos lengan panjang gelap di bawah kaos lengan pendek bergambar logo band fiksi robek/pudar.", motifs: "Lapisan semu, logo band fiksi.", audience: "Penyuka gaya grunge, tampilan berlapis." },
+            { category: "Emo", name: "Pastel Goth Hybrid", details: "Kemeja pastel (lavender, baby pink) dengan motif goth lembut (kelelawar kartun, kucing hitam, salib hias pita).", motifs: "Kelelawar kartun, kucing hitam, salib hias.", audience: "Penyuka perpaduan gelap & imut." },
+            { category: "Emo", name: "Mall Goth Chains & Studs", details: "Kemeja hitam dengan grafis rantai perak melintang, detail stud/paku semu di kerah/ujung lengan.", motifs: "Rantai, stud, paku.", audience: "Penyuka gaya Mall Goth, edgy." },
+            { category: "Streetwear", name: "Oversized Logo Tee (Virtual Brand)", details: "Kaos kebesaran dengan logo tebal merek streetwear fiksi. Warna tren 2025 ('Dark and Mossy', 'Orange Peel Garnish').", motifs: "Logo besar, merek fiksi.", audience: "Penyuka gaya kasual, modern, merek virtual." },
+            { category: "Streetwear", name: "Retro Sports Jersey", details: "Terinspirasi jersey sepak bola/basket vintage, garis di lengan, nomor/nama tim fiksi di belakang.", motifs: "Garis olahraga, nomor tim.", audience: "Penyuka gaya sporty, retro." },
+            { category: "Streetwear", name: "Artistic Collab Tee", details: "Tampak seperti kolaborasi dua 'seniman'/'merek' fiksi, gaya grafis kontras namun melengkapi.", motifs: "Grafis gabungan, gaya kontras.", audience: "Penyuka desain unik, kolaborasi." },
+            { category: "Streetwear", name: "Minimalist Utility Shirt", details: "Warna solid (tanah 'Grounding Tones') dengan detail utility (saku palsu, jahitan kontras).", motifs: "Detail utility, jahitan.", audience: "Penyuka gaya minimalis, fungsional." },
+            { category: "Niche", name: "Goblincore Mushroom Patch Tee", details: "Kemeja warna tanah (coklat, hijau lumut) dengan grafis jamur gambar tangan/sulaman semu, tambalan kain.", motifs: "Jamur, lumut, tambalan.", audience: "Penyuka alam, estetika DIY, 'aneh tapi menarik'." },
+            { category: "Niche", name: "Weirdcore Abstract Eye Shirt", details: "Warna dasar tidak jenuh/off-color, grafis mata tunggal besar bergaya, bentuk geometris abstrak, pola statis/glitch.", motifs: "Mata abstrak, glitch, surealis.", audience: "Penyuka gaya surealis, unik." },
+            { category: "Niche", name: "Solarpunk Bioluminescent Flora Tee", details: "Warna gelap (biru tua, hitam) dengan pola tanaman/bunga bersinar lembut (efek glow semu), elemen geometris futuristik.", motifs: "Tanaman bersinar, simbol energi.", audience: "Penyuka futurisme optimis, alam & teknologi." },
+            { category: "Niche", name: "Cottagecore Embroidered Wildflowers", details: "Warna krem/pastel lembut, desain bunga liar sulaman tangan semu di dada/lengan, kerah Peter Pan.", motifs: "Bunga liar sulaman, kerah Peter Pan.", audience: "Penyuka gaya romantis, pedesaan, vintage." },
+            { category: "Niche", name: "Dark Academia Argyle Vest Combo", details: "Kemeja putih klasik dengan ilusi rompi argyle coklat/hijau tua, dasi kupu-kupu kecil, logo 'universitas' fiksi.", motifs: "Argyle, dasi kupu-kupu, logo universitas.", audience: "Penyuka estetika klasik, intelektual, vintage." },
+            { category: "Niche", name: "Kidcore Rainbow Doodle Shirt", details: "Putih/warna cerah dengan coretan krayon warna-warni, stiker palsu (bintang, hewan lucu), karakter kartun naif.", motifs: "Coretan krayon, stiker, kartun naif.", audience: "Penyuka gaya ceria, kekanak-kanakan, nostalgia." },
+            { category: "Cultural", name: "K-Pop Fan Tee (Generic)", details: "Palet warna grup K-Pop populer (tanpa logo resmi), hati kecil, simbol fandom, frasa Korea ('사랑해').", motifs: "Warna grup, simbol fandom.", audience: "Penggemar K-Pop." },
+            { category: "Cultural", name: "Anime School Uniform Inspired Shirt", details: "Menyerupai atasan seragam sekolah anime generik (kerah pelaut, dasi pita, saku emblem fiksi).", motifs: "Kerah pelaut, emblem fiksi.", audience: "Penggemar anime, cosplay, seragam." },
+            { category: "Cultural", name: "Simplified Batik/Kente Print Shirt", details: "Pola geometris/bunga sederhana terinspirasi Batik Indonesia atau Kente Ghana. Warna tradisional.", motifs: "Pola Batik/Kente sederhana.", audience: "Penyuka budaya global, pola etnik." },
+            { category: "Cultural", name: "Telenovela Glam Top", details: "Gaya bodycon/atasan korset warna berani (merah, hot pink, macan tutul), detail perhiasan emas/berlian imitasi semu.", motifs: "Macan tutul, perhiasan semu.", audience: "Penyuka gaya glamor, dramatis." }
+        ],
+        designTechniques: [
+            { title: "Tekstur Realistis (Disimulasikan)", items: ["Denim: Jahitan kontras, efek pudar.", "Sutra/Satin: Highlight lembut, gradasi halus.", "Wol/Kain Rajut: Pola rajutan, tekstur 'berbulu'.", "Renda: Pola rumit, ilusi tembus pandang.", "Bordir Semu: Garis kecil rapat, menonjol.", "Efek Metalik: Highlight tajam, bayangan gelap.", "Bulu/Sisik/Beludru: Goresan berlapis, pola berulang, gradasi kaya."] },
+            { title: "Efek Visual Kreatif", items: ["Ilusi Optik: Pola tampak bergerak/berubah.", "Efek 3D Semu/Trompe-l'œil: Kerah menonjol, saku dalam, dasi tergantung.", "Patchwork: Gabungan 'tambalan' berbagai pola/warna/tekstur.", "Efek Tembus Pandang Semu (Sheer): Opasitas rendah pada bagian tertentu.", "Rune/Simbol Bercahaya Semu: Warna inti cerah, aura cahaya lembut."] },
+            { title: "Pentingnya Shading, Detail Halus, dan Palet Warna", items: ["Shading & Highlight: Memberi kedalaman, hindari template default. Gunakan Gaussian blur, smudge tool, blending mode.", "Detail Halus: Jahitan, kancing cermat, kerutan kain halus.", "Palet Warna Tepat: Saling melengkapi, sesuai estetika. Hindari hitam murni untuk shading kain berwarna."] }
+        ],
+        marketingStrategies: [
+            { title: "Penamaan, Deskripsi, dan Kata Kunci (SEO Roblox)", content: "Nama menarik, unik, deskriptif. Judul & deskripsi dengan kata kunci relevan (Y2K, Emo, Aesthetic, Streetwear, nama karakter/anime, warna). Deskripsi beri konteks, sorot fitur unik." },
+            { title: "Thumbnail (Ikon Item) dan Presentasi Visual", content: "Ikon item jelas & menarik. Homestore: Pemain 'mencoba' pakaian, tingkatkan konversi. Desain homestore menarik, mudah navigasi, tidak lag. Showcase di Pinterest, DeviantArt." },
+            { title: "Promosi Melalui Media Sosial dan Komunitas Roblox", content: "Media Sosial: TikTok, Instagram, Twitter/X, YouTube (screenshot avatar, speed design). Grup Roblox & Server Discord: Bagikan desain, dapatkan feedback, bangun pengikut. DevForum: Pamerkan karya, dapatkan feedback. Iklan Roblox: Promosikan grup/homestore jika ada budget." }
+        ],
+        conclusionContent: [
+            { title: "Sub-bagian 3.1: Ringkasan Tren Utama dan Peluang Desain yang Paling Menjanjikan", content: "Dominasi Y2K (McBling, Cyber Y2K, Pop Princess), Emo & Grunge (Pastel Goth, Mall Goth), Streetwear. Peluang signifikan di Niche Aesthetics (Goblincore, Weirdcore, Solarpunk, Cottagecore, Dark Academia, Kidcore). Pengaruh Budaya Global (Anime, K-Pop) kuat. Kualitas teknis (shading, detail, tekstur) krusial." },
+            { title: "Sub-bagian 3.2: Saran Praktis untuk Memulai, Menguji Desain, dan Terus Berkembang", items: [
+                "Memulai: Unduh template resmi. Gunakan software desain (Photoshop, GIMP, Photopea). Mulai sederhana (warna solid, logo kecil).",
+                "Menguji Desain: Roblox Studio (impor dekal ke dummy rig). Alat pratinjau online (Customuse).",
+                "Berkembang sebagai Desainer: Latihan konsisten, eksperimen. Cari inspirasi (Pinterest, toko online). Bergabung komunitas (DevForum, Discord). Keluar zona nyaman. Bangun portofolio."
+            ]},
+            { title: "Pernyataan Penutup", content: "Pasar Kemeja Klasik Roblox menawarkan peluang kreatif dan kewirausahaan. Kombinasi kreativitas, kualitas, adaptasi tren, dan keterlibatan komunitas adalah kunci. Jangan ragu memulai, rangkul visi artistik, dan berkontribusi pada mode digital Roblox." }
+        ]
+    };
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const mainNav = document.getElementById('mainNav');
+        const contentSections = document.querySelectorAll('.content-section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function setActiveSection(targetId) {
+            contentSections.forEach(section => {
+                if (section.id === targetId) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+            navLinks.forEach(link => {
+                if (link.dataset.target === targetId) {
+                    link.classList.remove('inactive-nav');
+                    link.classList.add('active-nav');
+                } else {
+                    link.classList.remove('active-nav');
+                    link.classList.add('inactive-nav');
+                }
+            });
+            window.scrollTo(0, 0);
+        }
+
+        mainNav.addEventListener('click', function (e) {
+            if (e.target.matches('.nav-link')) {
+                const targetId = e.target.dataset.target;
+                setActiveSection(targetId);
+            }
+        });
+
+        // Accordion
+        document.querySelectorAll('.accordion-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                button.classList.toggle('active');
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
+
+        // Populate Analisis Pasar
+        function populatePopularStyles() {
+            const container = document.getElementById('popularStylesContent');
+            reportData.popularStyles.forEach(style => {
+                const styleDiv = document.createElement('div');
+                styleDiv.className = 'mb-3 p-3 border border-gray-200 rounded-md bg-gray-50';
+                let subsHtml = '';
+                if (style.subs.length > 0) {
+                    subsHtml = '<ul class="list-disc list-inside ml-4 mt-2 text-sm text-gray-600 space-y-1">';
+                    style.subs.forEach(sub => {
+                        subsHtml += `<li><strong>${sub.name}:</strong> ${sub.visual} (Warna: ${sub.colors} Motif: ${sub.motifs})</li>`;
+                    });
+                    subsHtml += '</ul>';
+                }
+                styleDiv.innerHTML = `
+                    <h4 class="text-lg font-semibold text-teal-600">${style.name}</h4>
+                    <p class="text-sm text-gray-700"><strong>Elemen Visual:</strong> ${style.visual}</p>
+                    <p class="text-sm text-gray-700"><strong>Palet Warna:</strong> ${style.colors}</p>
+                    <p class="text-sm text-gray-700"><strong>Motif/Grafis:</strong> ${style.motifs}</p>
+                    ${subsHtml}
+                `;
+                container.appendChild(styleDiv);
+            });
+        }
+
+        function renderStylePopularityChart() {
+            const ctx = document.getElementById('stylePopularityChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: reportData.stylePopularityData.labels.map(label => label.length > 16 ? label.substring(0, 13) + '...' : label),
+                    datasets: [{
+                        label: 'Perkiraan Popularitas Gaya (%)',
+                        data: reportData.stylePopularityData.data,
+                        backgroundColor: 'rgba(13, 148, 136, 0.7)', // teal-600
+                        borderColor: 'rgba(13, 148, 136, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) { return value + "%" }
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                autoSkip: false,
+                                maxRotation: 45,
+                                minRotation: 45
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.raw}%`;
+                                }
+                            }
+                        },
+                        legend: {
+                            display: true,
+                            position: 'top',
+                        }
+                    }
+                }
+            });
+        }
+        
+        function populateColorTrends() {
+            const container = document.getElementById('colorTrendsContent');
+            reportData.colorTrends.forEach(trend => {
+                const colorDiv = document.createElement('div');
+                colorDiv.className = 'p-3 rounded-md shadow-sm flex flex-col items-center justify-center text-center h-24';
+                colorDiv.style.backgroundColor = trend.color;
+                colorDiv.innerHTML = `<span class="font-medium text-xs ${trend.textLight ? 'text-white' : 'text-black'}">${trend.name}</span>`;
+                container.appendChild(colorDiv);
+            });
+        }
+
+        function populatePatternTrends() {
+            const container = document.getElementById('patternTrendsContent');
+            reportData.patternTrends.forEach(pattern => {
+                const listItem = document.createElement('li');
+                listItem.textContent = pattern;
+                container.appendChild(listItem);
+            });
+        }
+        
+        function populateSuccessFactors() {
+            const container = document.getElementById('successFactorsContent');
+            reportData.successFactors.forEach(factor => {
+                const factorDiv = document.createElement('div');
+                factorDiv.innerHTML = `
+                    <h5 class="text-md font-semibold text-teal-600">${factor.title}</h5>
+                    <p class="text-sm text-gray-700">${factor.content}</p>
+                `;
+                container.appendChild(factorDiv);
+            });
+        }
+
+        if (document.getElementById('analisisPasar')) {
+            populatePopularStyles();
+            renderStylePopularityChart();
+            populateColorTrends();
+            populatePatternTrends();
+            populateSuccessFactors();
+        }
+
+        // Populate Ide Desain
+        const designIdeasContainer = document.getElementById('designIdeasContainer');
+        const ideaFiltersContainer = document.getElementById('ideaFiltersContainer');
+        let allCategories = ['all'];
+
+        function renderDesignIdeas(filter = 'all') {
+            designIdeasContainer.innerHTML = '';
+            const filteredIdeas = filter === 'all' ? reportData.designIdeas : reportData.designIdeas.filter(idea => idea.category.toLowerCase().includes(filter.toLowerCase()));
+            
+            filteredIdeas.forEach(idea => {
+                const card = document.createElement('div');
+                card.className = 'idea-card';
+                card.innerHTML = `
+                    <h4 class="text-xl font-semibold text-teal-600 mb-2">${idea.name} <span class="text-xs bg-teal-100 text-teal-700 px-2 py-1 rounded-full ml-2">${idea.category}</span></h4>
+                    <p class="text-sm text-gray-600 mb-1"><strong>Detail:</strong> ${idea.details}</p>
+                    <p class="text-sm text-gray-600 mb-1"><strong>Motif/Grafis:</strong> ${idea.motifs}</p>
+                    <p class="text-sm text-gray-600"><strong>Target Audiens:</strong> ${idea.audience}</p>
+                `;
+                designIdeasContainer.appendChild(card);
+            });
+        }
+
+        if (designIdeasContainer) {
+            reportData.designIdeas.forEach(idea => {
+                if (!allCategories.includes(idea.category)) {
+                    allCategories.push(idea.category);
+                }
+            });
+
+            allCategories.slice(1).forEach(category => { // Skip 'all'
+                const button = document.createElement('button');
+                button.className = 'filter-button px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300';
+                button.textContent = category;
+                button.dataset.filter = category;
+                ideaFiltersContainer.appendChild(button);
+            });
+            
+            ideaFiltersContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('filter-button')) {
+                    document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active', 'bg-teal-500', 'text-white'));
+                    document.querySelectorAll('.filter-button').forEach(btn => {
+                        if (!btn.classList.contains('active')) {
+                             btn.classList.add('bg-gray-200', 'text-gray-700');
+                        }
+                    });
+                    e.target.classList.add('active');
+                    e.target.classList.remove('bg-gray-200', 'text-gray-700');
+                    e.target.classList.add('bg-teal-500', 'text-white');
+                    renderDesignIdeas(e.target.dataset.filter);
+                }
+            });
+            renderDesignIdeas(); // Initial render
+        }
+
+        // Populate Teknik Desain
+        function populateDesignTechniques() {
+            const container = document.getElementById('designTechniquesContent');
+            reportData.designTechniques.forEach(technique => {
+                const sectionDiv = document.createElement('div');
+                sectionDiv.className = 'mb-3 p-3 border border-gray-200 rounded-md bg-gray-50';
+                let itemsHtml = '<ul class="list-disc list-inside ml-4 mt-2 text-sm text-gray-600 space-y-1">';
+                technique.items.forEach(item => {
+                    itemsHtml += `<li>${item}</li>`;
+                });
+                itemsHtml += '</ul>';
+                sectionDiv.innerHTML = `
+                    <h4 class="text-lg font-semibold text-teal-600">${technique.title}</h4>
+                    ${itemsHtml}
+                `;
+                container.appendChild(sectionDiv);
+            });
+        }
+        if (document.getElementById('teknikDesain')) populateDesignTechniques();
+
+        // Populate Pemasaran & Penjualan
+        function populateMarketingStrategies() {
+            const container = document.getElementById('marketingStrategiesContent');
+            reportData.marketingStrategies.forEach(strategy => {
+                const strategyDiv = document.createElement('div');
+                strategyDiv.className = 'mb-3 p-3 border border-gray-200 rounded-md bg-gray-50';
+                strategyDiv.innerHTML = `
+                    <h4 class="text-lg font-semibold text-teal-600">${strategy.title}</h4>
+                    <p class="text-sm text-gray-700">${strategy.content}</p>
+                `;
+                container.appendChild(strategyDiv);
+            });
+        }
+        if (document.getElementById('pemasaranPenjualan')) populateMarketingStrategies();
+        
+        // Populate Kesimpulan & Tips
+        function populateConclusion() {
+            const container = document.getElementById('conclusionContent');
+            reportData.conclusionContent.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'mb-3 p-3 border border-gray-200 rounded-md bg-gray-50';
+                let contentHtml = '';
+                if (item.items) {
+                    contentHtml = '<ul class="list-disc list-inside ml-4 mt-2 text-sm text-gray-600 space-y-1">';
+                    item.items.forEach(subItem => {
+                        contentHtml += `<li>${subItem}</li>`;
+                    });
+                    contentHtml += '</ul>';
+                } else {
+                    contentHtml = `<p class="text-sm text-gray-700">${item.content}</p>`;
+                }
+                itemDiv.innerHTML = `
+                    <h4 class="text-lg font-semibold text-teal-600">${item.title}</h4>
+                    ${contentHtml}
+                `;
+                container.appendChild(itemDiv);
+            });
+        }
+        if (document.getElementById('kesimpulanTips')) populateConclusion();
+
+        // Set initial active section
+        setActiveSection('beranda');
+    });
+</script>
+</body>
+</html>
